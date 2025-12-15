@@ -2,18 +2,6 @@
 
 Proyek ini adalah implementasi *Deep Learning* untuk mengklasifikasikan jenis sampah (Waste Classification) menggunakan metode **Transfer Learning** dengan arsitektur **MobileNet** sebagai *base model*.  Sistem ini dapat mengidentifikasi apakah sampah termasuk kategori **Organik (O)** atau **Daur Ulang (R)** dengan akurasi **89. 6%**.
 
-## 📋 Daftar Isi
-- [Deskripsi Proyek](#deskripsi-proyek)
-- [Fitur Utama](#fitur-utama)
-- [Struktur Folder](#struktur-folder)
-- [Prasyarat & Instalasi](#prasyarat--instalasi)
-- [Dataset](#dataset)
-- [Cara Penggunaan](#cara-penggunaan)
-- [Hasil & Evaluasi](#hasil--evaluasi)
-- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
-- [Kontribusi](#kontribusi)
-- [Lisensi](#lisensi)
-
 ## 📖 Deskripsi Proyek
 Sistem ini dirancang untuk mendeteksi dan mengkategorikan sampah secara otomatis dari gambar menggunakan teknik *Computer Vision*. Model dilatih menggunakan *Convolutional Neural Network* (CNN) dengan memanfaatkan *pre-trained model* **MobileNet** untuk klasifikasi biner:   **Organik (O)** dan **Daur Ulang (R)**. 
 
