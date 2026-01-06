@@ -5,7 +5,6 @@
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 ![GitHub Stars](https://img.shields.io/github/stars/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge&logo=github)
 ![GitHub Forks](https://img.shields.io/github/forks/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge&logo=github)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 > **🤖 Sistem Cerdas Pemilah Sampah Organik & Daur Ulang Menggunakan AI MobileNet**
 
