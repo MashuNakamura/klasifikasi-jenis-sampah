@@ -1,17 +1,15 @@
 # ♻️ Klasifikasi Sampah AI (EcoSort)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google. com/drive/1Qp_iFbx74UaUeTqfUwVeGHImNWrKe_Yi? usp=sharing)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue? style=for-the-badge&logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 ![GitHub Stars](https://img.shields.io/github/stars/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge&logo=github)
 ![GitHub Forks](https://img.shields.io/github/forks/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge&logo=github)
-![License](https://img.shields.io/github/license/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 > **🤖 Sistem Cerdas Pemilah Sampah Organik & Daur Ulang Menggunakan AI MobileNet**
 
-Proyek ini adalah implementasi *Deep Learning* (Computer Vision) untuk membantu proses pemilahan sampah secara otomatis!  🎯 Sistem AI ini dapat mendeteksi apakah sebuah objek sampah termasuk kategori **Organik (O)** atau **Daur Ulang (R)** hanya dengan melihat gambar atau foto dari kamera. 
+Proyek ini adalah implementasi *Deep Learning* (Computer Vision) untuk membantu proses pemilahan sampah secara otomatis!  🎯 Sistem AI ini dapat mendeteksi apakah sebuah objek sampah termasuk kategori **Organik (O)** atau **Daur Ulang (R)** secara otomatis melalui gambar atau kamera. 
 
 Dibangun dengan metode **Transfer Learning** menggunakan arsitektur **MobileNet** yang canggih namun ringan, proyek ini mencapai akurasi **89.6%** pada data testing - hampir setara kemampuan manusia!  🧠✨
 
@@ -19,18 +17,18 @@ Dibangun dengan metode **Transfer Learning** menggunakan arsitektur **MobileNet*
 
 ## 🎮 Coba Sekarang Juga!  (Demo Langsung)
 
-Ingin melihat AI-nya beraksi?  Atau penasaran bagaimana cara melatih "otak" AI ini?  Klik tombol ajaib di bawah: 
+Ingin melihat AI-nya beraksi? Atau penasaran bagaimana cara melatih "otak" AI ini? Klik tombol ajaib di bawah:
 
-[![Buka di Google Colab](https://img.shields.io/badge/🚀_Coba_di_Google_Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research. google.com/drive/1Qp_iFbx74UaUeTqfUwVeGHImNWrKe_Yi?usp=sharing)
+[![Buka di Google Colab](https://img.shields.io/badge/🚀_Coba_di_Google_Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1Qp_iFbx74UaUeTqfUwVeGHImNWrKe_Yi?usp=sharing)
 
 **💡 Tidak perlu install apapun! ** Langsung bisa dicoba di browser. 
 
 ---
 
-## 📖 Apa Sih Proyek Ini? 
+## 📖 Apa Sih Proyek Ini?
 
 ### 🤔 Masalah yang Dipecahkan
-Pernahkah kamu bingung:  *"Eh, sampah ini organik atau bisa didaur ulang ya?"* 
+Pernahkah kamu bingung: *"Eh, sampah ini organik atau bisa didaur ulang ya?"*
 
 Masalah sampah sering terjadi karena:
 - 😵‍💫 Kita bingung membedakan mana yang bisa didaur ulang dan mana yang mudah membusuk
@@ -38,7 +36,7 @@ Masalah sampah sering terjadi karena:
 - ♻️ Sampah yang bisa didaur ulang malah berakhir di TPA
 
 ### 🎯 Solusi Cerdas Berbasis AI
-Sistem ini hadir sebagai **"mata pintar"** yang bisa membantu kita memilah sampah dengan benar! 
+Sistem ini hadir sebagai **"mata pintar"** yang bisa membantu kita memilah sampah dengan benar!
 
 **Proyek ini terdiri dari 3 komponen utama:**
 1. 🧠 **Training Notebook:** Tempat melatih "otak" AI menggunakan ribuan gambar sampah
@@ -72,7 +70,7 @@ klasifikasi-jenis-sampah/
 ├── 🌐 app.py                                   # Aplikasi Web (Streamlit) - Buat demo
 ├── 🧠 KLASIFIKASI_SAMPAH_CNN_MOBILE_NET.ipynb  # "Otak" AI (Notebook Training)
 ├── 📋 requirements.txt                         # Daftar pustaka (library) yang dipakai
-├── 🤖 waste_classifier_mobilenet.keras         # Model AI yang sudah jadi (11. 6 MB)
+├── 🤖 waste_classifier_mobilenet.keras         # Model AI yang sudah jadi (11.6 MB)
 ├── 📊 images/                                  # Bukti hasil kinerja AI
 │   ├── evaluate_matplot.png                   # Grafik pembelajaran AI
 │   ├── confusion_matrix. png                   # Tabel kebenaran prediksi
@@ -126,7 +124,7 @@ jupyter notebook KLASIFIKASI_SAMPAH_CNN_MOBILE_NET. ipynb
 ## 📊 Dataset: Makanan "Otak" AI
 
 ### 🗂️ Struktur Data
-Model ini dilatih menggunakan ribuan gambar sampah yang sudah dikategorikan:
+Model ini dilatih menggunakan ribuan gambar sampah yang sudah dikategorikan: 
 
 ```
 dataset/
@@ -146,7 +144,7 @@ dataset/
 - **🥬 Organik (O):** 1,401 gambar (kulit buah, daun kering, sisa makanan)
 - **♻️ Daur Ulang (R):** 1,112 gambar (botol plastik, kaleng, kardus, kertas)
 
-**💡 Fun Fact:** AI ini "belajar" dari jutaan piksel untuk memahami perbedaan tekstur, warna, dan bentuk sampah! 
+**💡 Fun Fact:** AI ini "belajar" dari jutaan piksel untuk memahami perbedaan tekstur, warna, dan bentuk sampah!
 
 ---
 
@@ -263,7 +261,7 @@ print(f"🎯 Tingkat keyakinan: {predictions[0][0]:.2%}")
 
 ![Example Predictions](images/example_result.png)
 
-Lihat sendiri bagaimana AI ini bekerja dengan berbagai jenis sampah! 👀
+Lihat sendiri bagaimana AI ini bekerja dengan berbagai jenis sampah!  👀
 
 ---
 
@@ -276,7 +274,7 @@ Proyek ini menggunakan teknologi **open-source** terdepan:
 - **🧠 TensorFlow/Keras** - "Otak" di balik kecerdasan buatan Google
 - **📱 MobileNet** - Arsitektur AI yang ringan namun cerdas (perfect for mobile!)
 
-### 🌐 User Interface & Experience  
+### 🌐 User Interface & Experience
 - **🚀 Streamlit** - Pembuat tampilan web yang cantik & interaktif
 - **📓 Jupyter Notebook** - Playground untuk eksperimen AI
 
@@ -334,26 +332,11 @@ Mau berkontribusi?  Welcome banget! 🙌
 
 ---
 
-## 📄 License & Credits
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg? style=for-the-badge)](https://choosealicense.com/licenses/mit/)
-
-### 👨‍💻 Dibuat dengan ❤️ oleh: 
-**[@MashuNakamura](https://github.com/MashuNakamura)**
-
-### 🙏 Special Thanks:
-- **🤖 TensorFlow Team** - Amazing deep learning framework
-- **📱 MobileNet Creators** - Efficient architecture design  
-- **🚀 Streamlit Team** - Beautiful web app framework
-- **🌍 Open Source Community** - For making AI accessible to everyone
-
----
-
 ## 📞 Support & Contact
 
-Ada pertanyaan? Bug?  Atau mau ngobrol tentang AI?  
+Ada pertanyaan? Bug? Atau mau ngobrol tentang AI? 
 
-[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red? style=for-the-badge&logo=github)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah/issues)
+[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah/issues)
 [![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-blue?style=for-the-badge&logo=github)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah/discussions)
 
 ---
