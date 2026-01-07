@@ -2,13 +2,14 @@
 
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 ![GitHub Stars](https://img.shields.io/github/stars/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge&logo=github)
 ![GitHub Forks](https://img.shields.io/github/forks/MashuNakamura/klasifikasi-jenis-sampah?style=for-the-badge&logo=github)
 
 > **🤖 Sistem Cerdas Pemilah Sampah Organik & Daur Ulang Menggunakan AI MobileNet**
 
-Proyek ini adalah implementasi *Deep Learning* (Computer Vision) untuk membantu proses pemilahan sampah secara otomatis!  🎯 Sistem AI ini dapat mendeteksi apakah sebuah objek sampah termasuk kategori **Organik (O)** atau **Daur Ulang (R)** secara otomatis melalui gambar atau kamera. 
+Proyek ini adalah implementasi *Deep Learning* (Computer Vision) untuk membantu proses pemilahan sampah secara otomatis!   🎯 Sistem AI ini dapat mendeteksi apakah sebuah objek sampah termasuk kategori **Organik (O)** atau **Daur Ulang (R)** secara otomatis melalui gambar atau kamera.
 
 Dibangun dengan metode **Transfer Learning** menggunakan arsitektur **MobileNet** yang canggih namun ringan, proyek ini mencapai akurasi **89.6%** pada data testing - hampir setara kemampuan manusia!  🧠✨
 
@@ -16,18 +17,24 @@ Dibangun dengan metode **Transfer Learning** menggunakan arsitektur **MobileNet*
 
 ## 🎮 Coba Sekarang Juga!  (Demo Langsung)
 
-Ingin melihat AI-nya beraksi? Atau penasaran bagaimana cara melatih "otak" AI ini? Klik tombol ajaib di bawah:
+### 🌐 Akses Aplikasi Online
+**Langsung coba tanpa install apapun:**
+
+[![Buka Aplikasi Web](https://img.shields.io/badge/🚀_Coba_Aplikasi-trashvision. streamlit.app-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://trashvision.streamlit.app/)
+
+### 📓 Eksperimen dengan Training
+**Ingin melihat AI-nya beraksi?  Atau penasaran bagaimana cara melatih "otak" AI ini?  Klik tombol ajaib di bawah:**
 
 [![Buka di Google Colab](https://img.shields.io/badge/🚀_Coba_di_Google_Colab-F9AB00?style=for-the-badge&logo=googlecolab&logoColor=white)](https://colab.research.google.com/drive/1Qp_iFbx74UaUeTqfUwVeGHImNWrKe_Yi?usp=sharing)
 
-**💡 Tidak perlu install apapun! ** Langsung bisa dicoba di browser. 
+**💡 Tidak perlu install apapun! ** Langsung bisa dicoba di browser.
 
 ---
 
 ## 📖 Apa Sih Proyek Ini?
 
 ### 🤔 Masalah yang Dipecahkan
-Pernahkah kamu bingung: *"Eh, sampah ini organik atau bisa didaur ulang ya?"*
+Pernahkah kamu bingung:  *"Eh, sampah ini organik atau bisa didaur ulang ya?"*
 
 Masalah sampah sering terjadi karena:
 - 😵‍💫 Kita bingung membedakan mana yang bisa didaur ulang dan mana yang mudah membusuk
@@ -37,9 +44,9 @@ Masalah sampah sering terjadi karena:
 ### 🎯 Solusi Cerdas Berbasis AI
 Sistem ini hadir sebagai **"mata pintar"** yang bisa membantu kita memilah sampah dengan benar!
 
-**Proyek ini terdiri dari 3 komponen utama:**
-1. 🧠 **Training Notebook:** Tempat melatih "otak" AI menggunakan ribuan gambar sampah
-2. 💻 **Aplikasi Web (Streamlit):** Interface cantik agar semua orang bisa mencoba AI ini (upload foto/scan kamera)
+**Proyek ini terdiri dari komponen utama:**
+1. 💻 **Aplikasi Web (Streamlit):** Interface cantik agar semua orang bisa mencoba AI ini (upload foto/scan kamera)
+2. 🔌 **API Backend (FastAPI):** REST API untuk integrasi dengan aplikasi lain
 3. 📱 **Model MobileNet:** Teknologi AI yang ringan namun pintar, cocok untuk perangkat mobile/laptop
 
 ### 🔄 Alur Kerja "Otak" AI:
@@ -53,8 +60,10 @@ Sistem ini hadir sebagai **"mata pintar"** yang bisa membantu kita memilah sampa
 ## ✨ Fitur Keren yang Ada
 
 * ⚡ **Deteksi Super Cepat:** Klasifikasi Organik vs Daur Ulang dalam hitungan detik
-* 🎯 **Akurasi Tinggi:** 89.6% - hampir setara kemampuan manusia! 
+* 🎯 **Akurasi Tinggi:** 89.6% - hampir setara kemampuan manusia!
 * 👶 **User Friendly:** Aplikasi web sederhana, bahkan nenek bisa pakai
+* 🔌 **REST API:** FastAPI server untuk integrasi dengan aplikasi lain
+* 🌐 **Online Demo:** Tersedia demo online di trashvision.streamlit.app
 * 📦 **Siap Pakai:** Model pre-trained (`waste_classifier_mobilenet.keras`) sudah disertakan
 * 🔬 **Scientific:** Dilengkapi metrik evaluasi lengkap (Confusion Matrix, F1-Score, dll)
 * 🚀 **Efisien:** Menggunakan MobileNet yang terbukti ringan namun akurat
@@ -62,12 +71,12 @@ Sistem ini hadir sebagai **"mata pintar"** yang bisa membantu kita memilah sampa
 
 ---
 
-## 📂 Apa Aja yang Ada di Folder Ini? 
+## 📂 Apa Aja yang Ada di Folder Ini?
 
 ```text
 klasifikasi-jenis-sampah/
 ├── 🌐 app.py                                   # Aplikasi Web (Streamlit) - Buat demo
-├── 🧠 KLASIFIKASI_SAMPAH_CNN_MOBILE_NET.ipynb  # "Otak" AI (Notebook Training)
+├── 🔌 api.py                                   # REST API Server (FastAPI + Uvicorn)
 ├── 📋 requirements.txt                         # Daftar pustaka (library) yang dipakai
 ├── 🤖 waste_classifier_mobilenet.keras         # Model AI yang sudah jadi (11.6 MB)
 ├── 📊 images/                                  # Bukti hasil kinerja AI
@@ -97,33 +106,29 @@ git clone https://github.com/MashuNakamura/klasifikasi-jenis-sampah.git
 cd klasifikasi-jenis-sampah
 
 # Install semua kebutuhan AI-nya
-pip install -r requirements.txt
+pip install -r requirements. txt
 ```
 
-### 3️⃣ Jalankan Aplikasi Web
-Untuk membuka aplikasi demo yang cantik:
+### 3️⃣ Jalankan Aplikasi
 
+#### 🌐 Aplikasi Web (Streamlit)
 ```bash
 streamlit run app.py
 ```
-
 🎉 **Tada!** Aplikasi akan terbuka otomatis di browser kamu di `http://localhost:8501`
 
-### 4️⃣ Kalau Mau Eksperimen dengan Notebook
+#### 🔌 API Server (FastAPI + Uvicorn)
 ```bash
-# Install Jupyter dulu
-pip install jupyter numpy pandas matplotlib scikit-learn pillow seaborn
-
-# Buka notebook
-jupyter notebook KLASIFIKASI_SAMPAH_CNN_MOBILE_NET. ipynb
+uvicorn api:app --reload
 ```
+🚀 **API siap! ** Server berjalan di `http://localhost:8000` dengan dokumentasi otomatis di `http://localhost:8000/docs`
 
 ---
 
-## 📊 Dataset: Makanan "Otak" AI
+## 📊 Dataset:  Makanan "Otak" AI
 
 ### 🗂️ Struktur Data
-Model ini dilatih menggunakan ribuan gambar sampah yang sudah dikategorikan: 
+Model ini dilatih menggunakan ribuan gambar sampah yang sudah dikategorikan:
 
 ```
 dataset/
@@ -149,42 +154,21 @@ dataset/
 
 ## 🚀 3 Cara Menggunakan AI Ini
 
-### 🌐 Cara 1: Aplikasi Web (Paling Mudah!)
+### 🌐 Cara 1: Aplikasi Web Online (Paling Mudah!)
+Langsung buka:  **[trashvision.streamlit. app](https://trashvision.streamlit.app/)**
+Upload foto sampah → Lihat hasilnya!  📸✨
+
+### 💻 Cara 2: Aplikasi Web Localhost
 ```bash
 streamlit run app.py
 ```
-Buka browser → Upload foto sampah → Lihat hasilnya!  📸✨
+Buka browser → `http://localhost:8501` → Upload foto sampah!
 
-### 🧪 Cara 2: Notebook untuk Eksperimen
+### 🔌 Cara 3: REST API Server
 ```bash
-jupyter notebook KLASIFIKASI_SAMPAH_CNN_MOBILE_NET.ipynb
+uvicorn api:app --reload
 ```
-Cocok buat yang penasaran cara kerja AI-nya dari dalam!  🔬
-
-### 👨‍💻 Cara 3: Koding Manual (Untuk Programmer)
-```python
-import tensorflow as tf
-from tensorflow.keras.preprocessing import image
-import numpy as np
-
-# Load model AI yang sudah pintar
-model = tf.keras.models. load_model('waste_classifier_mobilenet.keras')
-
-# Siapkan gambar
-img_path = 'foto_sampah_kamu.jpg'
-img = image.load_img(img_path, target_size=(224, 224))
-img_array = image. img_to_array(img)
-img_array = np. expand_dims(img_array, axis=0)
-img_array = img_array / 255.0  # Normalisasi
-
-# Tanya sama AI:  "Ini sampah apa?"
-predictions = model.predict(img_array)
-class_names = ['🥬 Organik (O)', '♻️ Daur Ulang (R)']
-predicted_class = class_names[int(predictions[0] > 0.5)]
-
-print(f"🤖 AI bilang: {predicted_class}")
-print(f"🎯 Tingkat keyakinan: {predictions[0][0]:.2%}")
-```
+API tersedia di `http://localhost:8000` dengan dokumentasi di `http://localhost:8000/docs`
 
 ---
 
@@ -195,13 +179,13 @@ print(f"🎯 Tingkat keyakinan: {predictions[0][0]:.2%}")
 #### 📊 Nilai Ujian Validasi (Saat Belajar)
 | 📏 Metrik              | 📈 Nilai    | 💬 Artinya |
 |------------------------|-------------|------------|
-| **🎯 Validation Accuracy**  | **94.97%** | Sangat pintar saat latihan!  |
+| **🎯 Validation Accuracy**  | **94.97%** | Sangat pintar saat latihan!   |
 | **📉 Validation Loss**      | **0.1414** | Error sangat rendah |
 
 #### 📝 Nilai Ujian Akhir (Testing)
 | 📏 Metrik         | 📈 Nilai    | 💬 Artinya |
 |------------------|-------------|------------|
-| **🎯 Test Accuracy**   | **89.61%** | Hampir setara manusia! |
+| **🎯 Test Accuracy**   | **89.61%** | Hampir setara manusia!  |
 | **📉 Test Loss**       | **0.2857** | Performa stabil |
 
 ### 📋 Rapor Detail Per Kelas
@@ -229,21 +213,21 @@ print(f"🎯 Tingkat keyakinan: {predictions[0][0]:.2%}")
 
 **🎉 Keunggulan:**
 - **🥬 Recall Organik 97%:** AI sangat jago mendeteksi sampah organik (jarang terlewat!)
-- **♻️ Precision Daur Ulang 95%:** Kalau AI bilang "daur ulang", hampir pasti benar! 
+- **♻️ Precision Daur Ulang 95%:** Kalau AI bilang "daur ulang", hampir pasti benar!
 - **⚖️ Weighted Accuracy 90%:** Performa konsisten di kedua kategori
 
 **💡 Insight Praktis:**
 - AI ini **sangat baik** untuk mencegah sampah organik masuk ke tempat daur ulang (Recall 97%)
 - AI ini **sangat teliti** saat mendeteksi sampah daur ulang (Precision 95%)
-- Cocok untuk sistem otomatis pemilah sampah!  🤖
+- Cocok untuk sistem otomatis pemilah sampah!   🤖
 
 ### 📊 Tabel Kebenaran (Confusion Matrix)
 
-![Confusion Matrix](images/confusion_matrix. png)
+![Confusion Matrix](images/confusion_matrix.png)
 
 **🔢 Breakdown Angka:**
 - **✅ True Positive (O→O):** 1,358 sampah organik diprediksi benar
-- **❌ False Negative (O→R):** 43 organik salah ditebak daur ulang (3.1% saja!)
+- **❌ False Negative (O→R):** 43 organik salah ditebak daur ulang (3. 1% saja!)
 - **❌ False Positive (R→O):** 218 daur ulang salah ditebak organik (19.6%)
 - **✅ True Positive (R→R):** 894 sampah daur ulang diprediksi benar
 
@@ -273,9 +257,10 @@ Proyek ini menggunakan teknologi **open-source** terdepan:
 - **🧠 TensorFlow/Keras** - "Otak" di balik kecerdasan buatan Google
 - **📱 MobileNet** - Arsitektur AI yang ringan namun cerdas (perfect for mobile!)
 
-### 🌐 User Interface & Experience
+### 🌐 User Interface & API
 - **🚀 Streamlit** - Pembuat tampilan web yang cantik & interaktif
-- **📓 Jupyter Notebook** - Playground untuk eksperimen AI
+- **⚡ FastAPI** - Framework API modern yang cepat dan mudah untuk integrasi
+- **🔥 Uvicorn** - ASGI server yang cepat untuk menjalankan FastAPI
 
 ### 📊 Data Science & Visualization
 - **🔢 NumPy & Pandas** - Manipulasi data yang efisien
@@ -286,7 +271,7 @@ Proyek ini menggunakan teknologi **open-source** terdepan:
 ## 🎯 Cara Kerja "Otak" AI (Technical Magic)
 
 ### 🧬 Arsitektur MobileNet
-MobileNet adalah salah satu **arsitek AI terpintar** yang dirancang khusus untuk: 
+MobileNet adalah salah satu **arsitek AI terpintar** yang dirancang khusus untuk:
 - **⚡ Kecepatan:** Depthwise Separable Convolutions untuk efisiensi komputasi
 - **🎓 Transfer Learning:** Memanfaatkan pengetahuan dari jutaan gambar ImageNet
 - **🎯 Fine-tuning:** "Mengajari" layer terakhir untuk spesialisasi sampah
@@ -303,7 +288,7 @@ MobileNet adalah salah satu **arsitek AI terpintar** yang dirancang khusus untuk
 4. **🧠 Classification:** Dense layers + Sigmoid activation untuk keputusan final
 5. **📊 Output:** Probabilitas apakah Organik atau Daur Ulang
 
-### 🎨 Kenapa MobileNet? 
+### 🎨 Kenapa MobileNet?
 - **📱 Mobile-First:** Dirancang untuk smartphone & perangkat ringan
 - **⚡ Efisien:** 50x lebih cepat dari model tradisional
 - **🎯 Akurat:** Tetap mempertahankan akurasi tinggi
@@ -313,9 +298,9 @@ MobileNet adalah salah satu **arsitek AI terpintar** yang dirancang khusus untuk
 
 ## 🤝 Kontribusi & Development
 
-Mau berkontribusi?  Welcome banget! 🙌
+Mau berkontribusi?   Welcome banget!  🙌
 
-### 🎯 Cara Berkontribusi: 
+### 🎯 Cara Berkontribusi:
 1. 🍴 **Fork** repository ini
 2. 🌿 **Create branch** baru (`git checkout -b feature/amazing-feature`)
 3. 📝 **Commit** perubahan (`git commit -m 'Add amazing feature'`)
@@ -331,21 +316,12 @@ Mau berkontribusi?  Welcome banget! 🙌
 
 ---
 
-## 📞 Support & Contact
-
-Ada pertanyaan? Bug? Atau mau ngobrol tentang AI? 
-
-[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah/issues)
-[![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-blue?style=for-the-badge&logo=github)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah/discussions)
-
----
-
 <div align="center">
 
 ### 🌍 Mari Bersama Membangun Masa Depan yang Lebih Hijau!  ♻️
 
 **Jika proyek ini bermanfaat, jangan lupa kasih ⭐ ya!**
 
-[![Star This Repo](https://img.shields.io/github/stars/MashuNakamura/klasifikasi-jenis-sampah?style=social)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah)
+[![Star This Repo](https://img.shields.io/github/stars/MashuNakamura/klasifikasi-jenis-sampah? style=social)](https://github.com/MashuNakamura/klasifikasi-jenis-sampah)
 
 </div>
