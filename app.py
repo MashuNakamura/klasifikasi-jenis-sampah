@@ -273,9 +273,9 @@ with tab2:
 with tab3:
     st.write("### 👨‍💻 Developer Profile")
 
-    col_a, col_b = st.columns([1, 4])
+    col_a, col_b = st.columns([1, 8])
     with col_a:
-        st.image("https://cdn-icons-png.flaticon.com/512/3063/3063822.png")
+        st.image("https://cdn-icons-png.flaticon.com/512/3063/3063822.png", width=130)
     with col_b:
         st.markdown("""
         **Federico Matthew Pratama** Computer Science Student  
