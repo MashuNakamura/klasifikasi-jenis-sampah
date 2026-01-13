@@ -1,245 +1,303 @@
 import streamlit as st
 import numpy as np
 import time
+import os
+import warnings
 from PIL import Image
+
+# ==========================================
+# 0. KONFIGURASI AWAL (ANTI WARNING)
+# ==========================================
+warnings.filterwarnings('ignore')
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 
 # ==========================================
-# PAGE CONFIG
+# 1. PAGE CONFIG
 # ==========================================
 st.set_page_config(
-    page_title="EcoSort AI - Smart Waste Classification",
+    page_title="EcoSort AI",
     page_icon="♻️",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # ==========================================
-# CUSTOM CSS
+# 2. CUSTOM CSS (DARK MODE 2026)
 # ==========================================
 st.markdown("""
 <style>
-/* Global Font & Background */
-html, body, [class*="css"] {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background-color: #F6F7F9;
-    color: #1F2937; /* dark gray */
+/* Background & Text Global */
+.stApp {
+    background-color: #0E1117;
+    color: #FAFAFA;
 }
 
-/* Header */
+/* Header Gradient */
 .main-header {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: #1B5E20; /* dark green */
+    background: -webkit-linear-gradient(#4CAF50, #81C784);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-align: center;
+    margin-bottom: 0px;
 }
 
 .sub-header {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     text-align: center;
-    color: #374151; /* readable gray */
-    margin-bottom: 1.5rem;
+    color: #B0B0B0;
+    margin-bottom: 30px;
 }
 
-/* Card Result */
-.card {
-    background: #FAFAFA; /* off-white */
-    padding: 26px;
-    border-radius: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+/* Card Edukasi */
+.info-card {
+    background-color: #262730;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #363945;
+    margin-bottom: 15px;
+    min-height: 220px; /* Tinggi Minimal Sama */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-card h4 {
+    color: #FFFFFF !important;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.info-card p, .info-card li {
+    color: #E0E0E0 !important;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Result Card */
+.result-card {
+    background-color: #1F1F1F;
+    padding: 25px;
+    border-radius: 15px;
     text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.card h1 {
-    color: #111827; /* almost black */
-    margin-bottom: 4px;
+.result-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 10px 0;
 }
 
-.card p {
-    color: #4B5563; /* medium gray */
-    font-size: 1.05rem;
-}
-
-/* Streamlit Info / Success / Warning */
-.stAlert {
-    color: #111827;
-}
-
-/* Expander text */
-.streamlit-expanderContent {
-    color: #1F2937;
-}
-
-/* Caption */
-.stCaption {
-    color: #6B7280;
+/* Tabs Button */
+button[data-baseweb="tab"] {
+    font-size: 1rem;
+    font-weight: bold;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # ==========================================
-# SIDEBAR
-# ==========================================
-with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3063/3063822.png", width=90)
-    st.title("🌱 EcoSort AI")
-
-    st.markdown("### 🎯 Tujuan Sistem")
-    st.write("""
-    Membantu masyarakat **mengenali jenis sampah**
-    dan **cara pengolahan yang tepat** hanya dari foto.
-    """)
-
-    st.markdown("### 👥 Dapat Digunakan Oleh")
-    st.write("""
-    - Masyarakat umum  
-    - Sekolah & Kampus  
-    - Program lingkungan & Smart City  
-    """)
-
-    st.markdown("### 👨‍💻 Developer")
-    st.info("""
-    **Federico Matthew Pratama**  
-    Computer Science  
-    Universitas Katolik Darma Cendika
-    """)
-
-# ==========================================
-# LOAD MODEL
+# 3. LOAD MODEL
 # ==========================================
 @st.cache_resource
 def load_cnn_model():
     return load_model("waste_classifier_mobilenet.keras")
 
-model = load_cnn_model()
-model.predict(np.zeros((1,224,224,3)), verbose=0)
-
-labels = {0: "Organic", 1: "Recyclable"}
+try:
+    model = load_cnn_model()
+    model.predict(np.zeros((1,224,224,3)), verbose=0)
+except:
+    pass
 
 # ==========================================
-# HELPER
+# 4. HELPER
 # ==========================================
 def confidence_label(conf):
-    if conf >= 0.85:
-        return "🟢 Sangat Yakin"
-    elif conf >= 0.70:
-        return "🟡 Cukup Yakin"
-    else:
-        return "🔴 Kurang Yakin"
+    if conf >= 0.85: return "🟢 Sangat Yakin"
+    elif conf >= 0.70: return "🟡 Cukup Yakin"
+    else: return "🔴 Kurang Yakin"
 
 # ==========================================
-# HEADER
+# 5. HEADER
 # ==========================================
 st.markdown('<p class="main-header">♻️ EcoSort AI</p>', unsafe_allow_html=True)
-st.markdown(
-    '<p class="sub-header">AI membantu mengenali jenis sampah dan memberikan saran pengolahannya</p>',
-    unsafe_allow_html=True
-)
+st.markdown('<p class="sub-header">Solusi Pintar Klasifikasi Sampah Masa Depan</p>', unsafe_allow_html=True)
 
 # ==========================================
-# MAIN LAYOUT
+# 6. NAVIGASI UTAMA
 # ==========================================
-col_input, col_result = st.columns([1,1.2], gap="large")
+tab1, tab2, tab3 = st.tabs(["🏠 Beranda", "📸 Scan AI", "ℹ️ Tentang"])
 
 # ==========================================
-# INPUT
+# TAB 1: BERANDA (EDUKASI)
 # ==========================================
-with col_input:
-    st.subheader("📸 Ambil atau Upload Foto Sampah")
+with tab1:
+    st.write("### 🌏 Wawasan Lingkungan")
 
-    st.info("""
-    **Cara Menggunakan:** \n
-    1️⃣ Ambil foto sampah  
-    2️⃣ Upload atau gunakan kamera  
-    3️⃣ Lihat hasil & saran pengolahan
-    """)
+    # --- ROW 1: TEXT CARDS (SAMA TINGGI) ---
+    col_text1, col_text2 = st.columns(2)
 
-    tab1, tab2 = st.tabs(["📁 Upload", "📷 Kamera"])
-    image = None
+    with col_text1:
+        st.markdown("""
+        <div class="info-card" style="border-left: 5px solid #FFEB3B;">
+            <h4>⚠️ Masalah: Tumpukan Sampah</h4>
+            <p>Sampah yang tercampur di TPA menghasilkan gas metana berbahaya. Jutaan ton sampah berakhir mencemari laut dan tanah kita setiap tahunnya.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    with tab1:
-        file = st.file_uploader("Upload gambar (JPG / PNG)", type=["jpg","jpeg","png"])
-        if file:
-            image = Image.open(file)
+    with col_text2:
+        st.markdown("""
+        <div class="info-card" style="border-left: 5px solid #4CAF50;">
+            <h4>✅ Solusi: Teknologi AI</h4>
+            <p>EcoSort hadir menggunakan teknologi <i>Computer Vision</i> untuk memilah sampah secara instan, membantu proses daur ulang menjadi lebih efisien.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-    with tab2:
-        cam = st.camera_input("Ambil foto")
-        if cam:
-            image = Image.open(cam)
+    # --- ROW 2: IMAGES (PRESISI 800x500) ---
+    st.divider()
+    col_img1, col_img2 = st.columns(2)
+
+    with col_img1:
+        # Gambar Masalah (Auto Crop 800x500)
+        st.image("https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=800&h=500&q=80",
+                 caption="Realita: Sampah Tercampur",
+                 use_container_width=True)
+
+    with col_img2:
+        # Gambar Solusi (Auto Crop 800x500)
+        st.image("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&h=500&q=80",
+                 caption="Harapan: Lingkungan Bersih",
+                 use_container_width=True)
+
+    st.divider()
+    st.write("### 📚 Kategori Deteksi")
+
+    # --- ROW 3: LIST CARDS (SAMA TINGGI) ---
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("""
+        <div class="info-card" style="border: 1px solid #4CAF50;">
+            <h4 style="color:#66BB6A !important;">🍂 ORGANIK</h4>
+            <ul>
+                <li>Sisa Makanan & Tulang</li>
+                <li>Kulit Buah & Sayur</li>
+                <li>Daun & Ranting Pohon</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c2:
+        st.markdown("""
+        <div class="info-card" style="border: 1px solid #2196F3;">
+            <h4 style="color:#42A5F5 !important;">♻️ RECYCLABLE</h4>
+            <ul>
+                <li>Botol Plastik & Kaca</li>
+                <li>Kertas, Kardus, Koran</li>
+                <li>Kaleng Minuman & Logam</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ==========================================
+# TAB 2: SCAN AI
+# ==========================================
+with tab2:
+    st.write("### 🤖 Deteksi Sampah")
+    st.caption("Pilih metode pengambilan gambar:")
+
+    with st.container(border=True):
+        input_type = st.radio("", ["📁 Upload File", "📷 Kamera"], horizontal=True, label_visibility="collapsed")
+
+        image = None
+        if input_type == "📁 Upload File":
+            file = st.file_uploader("Upload foto (JPG/PNG)", type=["jpg","jpeg","png"])
+            if file: image = Image.open(file)
+        else:
+            cam = st.camera_input("Jepret foto")
+            if cam: image = Image.open(cam)
 
     if image:
-        st.image(image, caption="Gambar yang dianalisis", use_column_width=True)
+        st.divider()
+        st.write("##### 🔍 Hasil Analisis")
 
-# ==========================================
-# RESULT
-# ==========================================
-with col_result:
-    st.subheader("🔍 Hasil Analisis")
+        col_img, col_info = st.columns([1, 1.5])
 
-    if image is None:
-        st.info("👈 Silakan masukkan gambar sampah terlebih dahulu")
-        st.image(
-            "https://cdn-icons-png.flaticon.com/512/8634/8634075.png",
-            width=160
-        )
-    else:
-        with st.spinner("AI sedang menganalisis..."):
-            time.sleep(0.8)
+        with col_img:
+            st.image(image, caption="Input Citra", use_container_width=True)
 
-            img = image.resize((224,224))
-            arr = img_to_array(img) / 255.0
-            arr = np.expand_dims(arr, axis=0)
+        with col_info:
+            with st.spinner("Sedang memproses..."):
+                time.sleep(0.5)
+                img_resized = image.resize((224,224))
+                arr = img_to_array(img_resized) / 255.0
+                arr = np.expand_dims(arr, axis=0)
 
-            pred = model.predict(arr, verbose=0)
-            idx = np.argmax(pred)
-            conf = pred[0][idx]
+                pred = model.predict(arr, verbose=0)
+                idx = np.argmax(pred)
+                conf = pred[0][idx]
 
-        st.markdown("## 🧠 AI Menilai Sampah Ini Sebagai:")
-
-        if conf < 0.60:
-            st.warning("🤔 Sampah Belum Bisa Dikenali")
-            st.write("""
-            Kemungkinan:
-            - Foto kurang jelas  
-            - Bukan objek sampah  
-            - Sampah campuran
-            """)
-        else:
-            if idx == 0:
-                st.markdown("""
-                <div class="card" style="border-left:10px solid #4CAF50;">
-                    <h1>🌱 ORGANIC</h1>
-                    <p>Mudah terurai secara alami</p>
-                </div>
-                """, unsafe_allow_html=True)
-
-                st.success(f"Tingkat Keyakinan AI: **{confidence_label(conf)}**")
-
-                with st.expander("✅ Saran Pengolahan", expanded=True):
-                    st.write("""
-                    - Buang ke komposter  
-                    - Olah menjadi pupuk  
-                    - Dapat digunakan untuk maggot (BSF)
-                    """)
+            if conf < 0.60:
+                st.warning("⚠️ Objek tidak dikenal. Coba foto lebih jelas.")
             else:
-                st.markdown("""
-                <div class="card" style="border-left:10px solid #2196F3;">
-                    <h1>♻️ RECYCLABLE</h1>
-                    <p>Dapat didaur ulang</p>
+                label = "ORGANIC" if idx == 0 else "RECYCLABLE"
+                color = "#66BB6A" if idx == 0 else "#42A5F5"
+
+                st.markdown(f"""
+                <div class="result-card" style="border: 2px solid {color};">
+                    <p style="color:#BBB; margin:0;">Terdeteksi Sebagai</p>
+                    <h1 class="result-title" style="color: {color};">{label}</h1>
+                    <p style="color:#EEE; font-weight:bold;">{confidence_label(conf)} ({conf*100:.1f}%)</p>
                 </div>
                 """, unsafe_allow_html=True)
 
-                st.info(f"Tingkat Keyakinan AI: **{confidence_label(conf)}**")
+                st.write("")
+                if idx == 0:
+                    with st.expander("🌱 Lihat Saran Pengolahan"):
+                        st.info("Bisa dijadikan **Pupuk Kompos** atau pakan Maggot (BSF).")
+                else:
+                    with st.expander("♻️ Lihat Saran Pengolahan"):
+                        st.info("Cuci bersih, pilah tutup botol, dan bawa ke **Bank Sampah**.")
 
-                with st.expander("✅ Saran Pengolahan", expanded=True):
-                    st.write("""
-                    - Cuci & keringkan  
-                    - Pisahkan tutup botol  
-                    - Setorkan ke Bank Sampah
-                    """)
+    else:
+        st.info("👆 Masukkan gambar untuk memulai.")
 
-        st.write("---")
-        st.caption("Seberapa yakin AI terhadap hasil ini?")
-        st.progress(float(conf))
+# ==========================================
+# TAB 3: TENTANG
+# ==========================================
+with tab3:
+    st.write("### 👨‍💻 Developer Profile")
+
+    col_a, col_b = st.columns([1, 4])
+    with col_a:
+        st.image("https://cdn-icons-png.flaticon.com/512/3063/3063822.png")
+    with col_b:
+        st.markdown("""
+        **Federico Matthew Pratama** Computer Science Student  
+        *Universitas Katolik Darma Cendika*
+        """)
+
+        st.link_button(
+            "Buka Repository GitHub",
+            "https://github.com/MashuNakamura/klasifikasi-jenis-sampah",
+            type="primary"
+        )
+
+    st.divider()
+    st.write("### ℹ️ Tentang Aplikasi")
+    st.write("""
+    **EcoSort AI** adalah prototipe sistem pemilahan sampah cerdas berbasis *Deep Learning*.
+    Dikembangkan untuk mendukung program *Smart City* dan manajemen limbah berkelanjutan.
+    
+    **Teknologi:**
+    - Python & Streamlit (Frontend)
+    - TensorFlow & MobileNetV2 (AI Core)
+    - FastAPI (Backend Service)
+    """)
+
+    st.caption("© 2026 EcoSort AI. All Rights Reserved.")
